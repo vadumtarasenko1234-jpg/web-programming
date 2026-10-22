@@ -26,7 +26,7 @@
 
 Посилання на опубліковану сторінку:
 
-https://gonflik.github.io/web-something-college/laba2/index.html
+file:///C:/Users/vadim/Desktop/WEb%20program/lab2/index.html
 
 Скріншот результату:
 
