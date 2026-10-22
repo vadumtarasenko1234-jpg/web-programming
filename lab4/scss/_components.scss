@@ -1,0 +1,326 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+// ── Buttons ──────────────────────────────────────────────
+.btn {
+  display: inline-block;
+  padding: 11px 26px;
+  border-radius: v.$radius-sm + 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &-primary {
+    background: v.$color-primary;
+    color: #fff;
+    border-color: v.$color-primary;
+
+    &:hover {
+      background: v.$color-primary-dark;
+      border-color: v.$color-primary-dark;
+    }
+  }
+}
+
+// ── Status badges ────────────────────────────────────────
+.status-badge {
+  @include m.status-badge;
+
+  &.status-ok {
+    background: v.$color-success-bg;
+    color: v.$color-success-text;
+  }
+
+  &.status-exceeded {
+    background: v.$color-danger-bg;
+    color: v.$color-danger;
+  }
+}
+
+// ── Monitoring grid ───────────────────────────────────────
+.monitoring-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-md;
+  margin-top: v.$space-lg;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius + 2;
+  padding: 20px;
+  background: v.$color-surface;
+
+  @include m.respond-to(v.$bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(v.$bp-desktop) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.monitor-card {
+  padding: 0 v.$space-md;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: v.$space-md;
+
+  @include m.respond-to(v.$bp-desktop) {
+    border-bottom: none;
+    border-right: 1px solid #e8e8e8;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .monitor-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-bottom: 4px;
+  }
+
+  .monitor-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+  }
+
+  .monitor-meta {
+    display: block;
+    font-size: 0.8rem;
+    color: v.$color-muted;
+  }
+}
+
+#monitoring .highlight-value {
+  color: v.$color-primary;
+  font-size: 1.6rem;
+}
+
+// ── Services grid ─────────────────────────────────────────
+.services-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-md;
+  margin-top: v.$space-lg;
+
+  @include m.respond-to(v.$bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(v.$bp-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius + 1;
+  padding: 22px 18px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #a5d6a7;
+    box-shadow: 0 2px 10px rgba(v.$color-primary, 0.08);
+  }
+
+  .service-title {
+    font-size: 0.95rem;
+    color: #1a1a1a;
+    margin-bottom: v.$space-sm;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+  }
+}
+
+// ── Warning banner ────────────────────────────────────────
+#warning {
+  @include m.container;
+  position: relative;
+  padding: 18px 20px;
+  background: v.$color-warning-bg;
+  border: 1px solid v.$color-warning-border;
+  border-left: 4px solid v.$color-warning-accent;
+  border-radius: v.$radius;
+
+  &:hover .warning-marker {
+    transform: scale(1.15);
+  }
+
+  strong {
+    display: block;
+    color: v.$color-warning-accent;
+    margin-bottom: 4px;
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: v.$color-warning-text;
+  }
+}
+
+.warning-marker {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background: v.$color-warning-accent;
+  color: #fff;
+  border-radius: 50%;
+  @include m.flex-center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+
+// ── Measurements table ────────────────────────────────────
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: v.$space-lg;
+}
+
+#measurements-table {
+  min-width: 580px;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius + 1;
+  overflow: hidden;
+
+  thead {
+    background: #f9f9f9;
+  }
+
+  th {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 0.82rem;
+    color: v.$color-muted;
+    font-weight: 600;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  td {
+    padding: 13px 18px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background: #f5faf5;
+  }
+}
+
+td.noise-exceeded,
+tr.row-exceeded td {
+  color: v.$color-danger;
+}
+
+// ── Order form ────────────────────────────────────────────
+.order-form {
+  margin-top: v.$space-sm;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-lg;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-lg;
+
+  @include m.respond-to(v.$bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(v.$bp-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // prevent grid blowout
+
+  label {
+    font-size: 0.82rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  // textarea spans full width on tablet+
+  &:has(textarea) {
+    @include m.respond-to(v.$bp-tablet) {
+      grid-column: 1 / -1;
+    }
+
+    @include m.respond-to(v.$bp-desktop) {
+      grid-column: auto;
+    }
+  }
+}
+
+.required {
+  color: v.$color-danger;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  background: v.$color-surface;
+  border: 1px solid #d0d0d0;
+  border-radius: v.$radius-sm;
+  padding: 9px 13px;
+  color: v.$color-text;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
+}
+
+input[type="email"] {
+  border-color: #c8d8c8;
+}
+
+.btn-submit {
+  background: v.$color-primary;
+  color: #fff;
+  border: 2px solid v.$color-primary;
+  padding: 11px 32px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: v.$radius-sm;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  align-self: start;
+
+  &:hover {
+    background: v.$color-primary-dark;
+    border-color: v.$color-primary-dark;
+  }
+}

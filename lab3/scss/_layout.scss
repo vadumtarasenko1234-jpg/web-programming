@@ -1,0 +1,214 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+// ── Header ──────────────────────────────────────────────
+#site-header {
+  background: v.$color-surface;
+  border-bottom: 1px solid v.$color-border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  @include m.container;
+  padding-block: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-md;
+
+  @include m.respond-to(v.$bp-tablet) {
+    @include m.flex-between;
+    flex-direction: row;
+  }
+}
+
+// ── Brand ────────────────────────────────────────────────
+.brand {
+  display: flex;
+  flex-direction: column;
+
+  .brand-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .brand-tagline {
+    font-size: 0.78rem;
+    color: v.$color-muted;
+  }
+}
+
+// ── Nav ──────────────────────────────────────────────────
+nav .nav-list {
+  display: none;
+
+  @include m.respond-to(v.$bp-tablet) {
+    display: flex;
+    flex-direction: row;
+    gap: v.$space-xs;
+    flex-wrap: wrap;
+  }
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  color: #444;
+  border-radius: v.$radius-sm;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+
+  &.active {
+    color: v.$color-primary;
+    font-weight: 600;
+    border-bottom: 2px solid v.$color-primary;
+  }
+}
+
+// ── Sections ─────────────────────────────────────────────
+.section {
+  @include m.container;
+  padding-block: v.$space-2xl;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  color: #777;
+  margin-bottom: 28px;
+  font-size: 0.9rem;
+}
+
+// ── Hero ─────────────────────────────────────────────────
+.hero-section {
+  padding: 0;
+  max-width: 100%;
+}
+
+.hero-image-placeholder {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #c8d8c8;
+  overflow: hidden;
+
+  @include m.respond-to(v.$bp-tablet) {
+    height: 340px;
+  }
+
+  @include m.respond-to(v.$bp-desktop) {
+    height: 400px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.52) 45%, transparent 100%);
+    z-index: 1;
+  }
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 v.$space-lg;
+
+  @include m.respond-to(v.$bp-tablet) {
+    padding: 0 v.$space-xl;
+  }
+
+  @include m.respond-to(v.$bp-desktop) {
+    padding: 0 64px;
+  }
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
+  color: #fff;
+  margin-bottom: 14px;
+  max-width: 480px;
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  color: #d0e8d0;
+  max-width: 420px;
+  margin-bottom: 28px;
+  line-height: 1.65;
+}
+
+// ── Footer ───────────────────────────────────────────────
+footer {
+  background: v.$color-footer-bg;
+  margin-top: 60px;
+}
+
+.footer-inner {
+  @include m.container;
+  padding-block: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
+
+  @include m.respond-to(v.$bp-tablet) {
+    @include m.flex-between;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .brand-name { color: #fff; }
+  .brand-tagline { color: v.$color-muted; }
+}
+
+.footer-contacts {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.footer-nav {
+  .nav-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .nav-link {
+    color: v.$color-muted;
+    font-size: 0.85rem;
+
+    &:hover { color: #a5d6a7; }
+  }
+}
+
+.footer-copy {
+  text-align: center;
+  padding: 14px 24px;
+  font-size: 0.78rem;
+  color: #555;
+  border-top: 1px solid #2a2a2a;
+}

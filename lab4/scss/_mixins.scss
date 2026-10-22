@@ -1,0 +1,37 @@
+@use "variables" as v;
+
+// Responsive breakpoint helper (Mobile First)
+@mixin respond-to($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+// Centered container with fluid padding
+@mixin container {
+  width: min(100% - 32px, v.$container-max);
+  margin-inline: auto;
+}
+
+// Flex center shorthand
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flex row with space-between
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Status badge shared style
+@mixin status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: v.$radius-sm;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
