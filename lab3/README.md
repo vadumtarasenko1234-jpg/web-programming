@@ -45,8 +45,7 @@ acoustic-watch/
 
 ## Результат
 
-Посилання на опублікований проєкт: https://gonflik.github.io/web-something-college/laba3/index.html
-
+Посилання на опублікований проєкт: https://vadumtarasenko1234-jpg.github.io/web-programming/lab3/
 Скріншоти результату:
 
 Mobile (375px):
