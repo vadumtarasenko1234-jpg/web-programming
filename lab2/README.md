@@ -26,7 +26,7 @@
 
 Посилання на опубліковану сторінку:
 
-file:///C:/Users/vadim/Desktop/WEb%20program/lab2/index.html
+https://vadumtarasenko1234-jpg.github.io/web-programming/lab2/
 
 Скріншот результату:
 
